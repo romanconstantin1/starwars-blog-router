@@ -1,8 +1,15 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { CharGen } from "../component/char_gen";
+import { PlanGen } from "../component/plan_gen";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-	</div>
-);
+//<CharGen />
+//<PlanGen />
+export const Home = () => {
+	return (
+		<div>
+			<CharGen />
+			<PlanGen />
+		</div>
+	);
+};
