@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import char_placeholder from "../../img/char_placeholder.jpg";
+import plan_placeholder from "../../img/plan_placeholder.jpg";
 
-export const CharGen = () => {
+export const PlanGen = () => {
 
 	const [itemList, setItemList] = useState(["Loading..."])
-	const apiURL = "https://www.swapi.tech/api/people"
+	const apiURL = "https://www.swapi.tech/api/planets"
 
 	useEffect(() => {
 			fetch(apiURL)
@@ -15,20 +15,18 @@ export const CharGen = () => {
 	return (
 		itemList.map(entry => 
 		<div className="card" style={{"width": "25rem"}}> 
-			<img src={char_placeholder} className="card-img-top"></img>
+			<img src={plan_placeholder} className="card-img-top"></img>
   			<div className="card-body">
    				<h5 className="card-title">{entry.name}</h5>
     			<ul className="list-unstyled">
-					<li>Gender: </li>
-					<li>Hair color: </li>
-					<li>Eye color: </li>
-				</ul>	
+					<li>Population: </li>
+					<li>Terrain: </li>
+				</ul>
 				<div>
    					<button type="button" className="btn btn-outline-primary float-start">Learn more</button>
 					<button type="button" className="btn btn-outline-warning float-end">Heart emoji</button>
 				</div>
   			</div>
 		</div>)
-	)
-		
-	};
+    );
+;}

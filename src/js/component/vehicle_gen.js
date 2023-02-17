@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import char_placeholder from "../../img/char_placeholder.jpg";
+import vehicle_placeholder from "../../img/vehicle_placeholder.png";
 
-export const CharGen = () => {
+export const VehicleGen = () => {
 
 	const [itemList, setItemList] = useState(["Loading..."])
-	const apiURL = "https://www.swapi.tech/api/people"
+	const apiURL = "https://www.swapi.tech/api/starships"
 
 	useEffect(() => {
 			fetch(apiURL)
@@ -13,15 +13,15 @@ export const CharGen = () => {
 	  }, []);
 
 	return (
-		itemList.map(entry => 
+        itemList.map(entry => 
 		<div className="card" style={{"width": "25rem"}}> 
-			<img src={char_placeholder} className="card-img-top"></img>
+			<img src={vehicle_placeholder} className="card-img-top"></img>
   			<div className="card-body">
    				<h5 className="card-title">{entry.name}</h5>
     			<ul className="list-unstyled">
-					<li>Gender: </li>
-					<li>Hair color: </li>
-					<li>Eye color: </li>
+					<li>Crew: </li>
+					<li>Hyperdrive rating: </li>
+					<li>Cost in credits: </li>
 				</ul>	
 				<div>
    					<button type="button" className="btn btn-outline-primary float-start">Learn more</button>
@@ -29,6 +29,5 @@ export const CharGen = () => {
 				</div>
   			</div>
 		</div>)
-	)
-		
+	)	
 	};
