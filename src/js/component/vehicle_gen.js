@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import placeholder from "../../img/placeholder.jpeg";
 
-/* maybe add to card entry: 
-	<ul className="list-unstyled">
-	<li>Crew: </li>
-	<li>Hyperdrive rating: </li>
-	<li>Cost in credits:: </li>
-	</ul>
-	*/
-
 export const VehicleGen = () => {
 
 	const [itemList, setItemList] = useState(["Loading..."])
@@ -37,4 +29,4 @@ export const VehicleGen = () => {
 			</div>)}
 		</div>
 	)	
-	};
+}

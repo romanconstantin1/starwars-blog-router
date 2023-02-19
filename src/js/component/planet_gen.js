@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import placeholder from "../../img/placeholder.jpeg";
 
-/* maybe add to card entry: 
-	<ul className="list-unstyled">
-	<li>Population: </li>
-	<li>Terrain: </li>
-	</ul>
-	*/
-
 export const PlanGen = () => {
 
 	const [itemList, setItemList] = useState(["Loading..."])
@@ -21,7 +14,9 @@ export const PlanGen = () => {
 
 	return (
 		<div className="row m-3 flex-row flex-nowrap overflow-scroll">
-			{itemList.map(entry => 
+		{console.log(itemList)}
+		{console.log("^ planets")}
+		{itemList.map(entry => 
 			<div className="card mx-2" style={{"width": "19rem"}}> 
 				<img src={placeholder} className="card-img-top"></img>
 				<div className="card-body">
@@ -36,4 +31,4 @@ export const PlanGen = () => {
 			</div>)}
 		</div>
     );
-;}
+}
