@@ -12,9 +12,7 @@ export const Navbar = () => {
     					Favorites
 					</button>
 					<ul className="dropdown-menu">
-						<li><a className="dropdown-item" href="#">Action</a></li>
-						<li><a className="dropdown-item" href="#">Action two</a></li>
-						<li><a className="dropdown-item" href="#">Action three</a></li>
+						<li><a className="dropdown-item" href="#">Empty list <i class="fa-solid fa-heart-circle-minus"></i></a></li>
 					</ul>
 					</div>
   			</div>
