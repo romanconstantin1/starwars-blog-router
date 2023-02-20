@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
-import {CardGen} from "../component/card_gen"
+import { CardGen } from "../component/card_gen.jsx"
 
 
 export const Home = () => {
