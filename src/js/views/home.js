@@ -4,9 +4,9 @@ import {CardGen} from "../component/card_gen"
 
 
 export const Home = () => {
-	const [charList, setCharList] = useState([])
-	const [planetList, setPlanetList] = useState([])
-	const [shipList, setShipList] = useState([])
+	const [charList, setCharList] = useState([{name: "Loading..."}])
+	const [planetList, setPlanetList] = useState([{name: "Loading..."}])
+	const [shipList, setShipList] = useState([{name: "Loading..."}])
 
 	useEffect(() => {
 		fetch("https://www.swapi.tech/api/people")
@@ -25,7 +25,7 @@ export const Home = () => {
 		.then(list => list.json())
 		.then(list => setShipList(list.results))
   	}, [])
-
+	
 	return (
 		<div>
 			<h1 className="mx-3">Characters</h1>
