@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useContext, prevState } from "react";
-import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
 import { useLocation } from "react-router-dom";
 import placeholder from "../../img/placeholder.jpeg";
+import { FavoriteCounter } from "../FavoritesContext/FavsContext.jsx"
 
 //todo: add context for favorites list
 
 export const Single = (props) => {
 	const location = useLocation()
 	const state = location.state
+
+	const {favCount, updateFavCount} = useContext(FavoriteCounter)
 
 	const [dataList, setDataList] = useState([])
 
@@ -27,8 +28,9 @@ export const Single = (props) => {
 				</div>
 				<div className="col mx-1 display-flex">
 					<p className="fs-1 text-capitalize">{dataList.name}</p>
-					<button type="button" className="btn btn-outline-warning">
-					Add to favorites <i class="fa-solid fa-heart-circle-plus"></i>
+					<button type="button" className="btn btn-outline-warning" onClick={() => {
+                        if (dataList.name != undefined)updateFavCount([...favCount, dataList.name])}}>
+					Add to favorites <i className="fa-solid fa-heart-circle-plus"></i>
                     </button>
 					<p className="fs-3 mt-3">A long time ago, in a galaxy far far away...</p>
 				</div>

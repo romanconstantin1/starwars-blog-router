@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -9,22 +9,26 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-//create your first component
-const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-	const basename = process.env.BASENAME || "";
+import { FavoriteCounter } from "./FavoritesContext/FavsContext.jsx";
+
+export const Layout = () => {
+
+	const [favCount, updateFavCount] = useState([])
 
 	return (
 		<div>
-			<BrowserRouter basename={basename}>
+			<BrowserRouter>
 				<ScrollToTop>
+
+					<FavoriteCounter.Provider value={ {favCount, updateFavCount} }>
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/single/*" element={<Single />} />
-						<Route path="/single/Loading..." element={<h1>Not found!</h1>} />
+						<Route path="/single/Loading..." element={<h1 className="mx-3 my-1">Not found!</h1>} />
 					</Routes>
+					</FavoriteCounter.Provider>
+
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
