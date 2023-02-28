@@ -24,16 +24,16 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			fetch("https://www.swapi.tech/api/people")
 			.then(charList => charList.json())
-			.then(charList => state.actions.loadSomeData("people", charList))
+			.then(charList => state.actions.loadSomeData("people", charList.results))
 			.then(console.log(state.store));
 
 			fetch("https://www.swapi.tech/api/planets")
 			.then(planList => planList.json())
-			.then(planList => state.actions.loadSomeData("planets", planList));
+			.then(planList => state.actions.loadSomeData("planets", planList.results));
 
 			fetch("https://www.swapi.tech/api/starships")
 			.then(shipList => shipList.json())
-			.then(shipList => state.actions.loadSomeData("ships", shipList))
+			.then(shipList => state.actions.loadSomeData("ships", shipList.results))
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

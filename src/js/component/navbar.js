@@ -9,7 +9,6 @@ export const Navbar = () => {
 
 	const {store, actions} = useContext(Context)
 	const favs = store.favorites
-	console.log(favs)
 	return (
 		<nav className="navbar bg-light">
   			<div className="container-fluid">
@@ -18,18 +17,19 @@ export const Navbar = () => {
 				<div className="dropdown px-2">
   					<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     					Favorites
-						<span className="badge rounded-pill bg-secondary mx-2">test</span>
+						<span className="badge rounded-pill bg-secondary mx-2">{favs.length}</span>
 					</button>
 					
 					<ul className="dropdown-menu dropdown-menu-end">
-						{Object.keys(favs)?.map((entry) => {
+						{favs.map((entry) => {
 							return (	
-								<li key={favs[entry].name} className="display-inline">
-									<Link to={`/single/${favs[entry].name}`} 
-									state={favs[entry].url}
-									onClick={() => {updateSingleDisplay({name: favs[entry].name, url: favs[entry].url})}} 
+								<li key={entry.name} className="display-inline">
+									<Link to={`/single/${entry.name}`} 
+									state={entry.url}
+									onClick={() => {actions.loadSomeData("singleview", {name: [entry.name], url: [entry.url]})
+										}} 
 									className="dropdown-item">
-										{favs[entry]}
+										{entry.name}
 									</Link>
 									<i className="fa-solid fa-heart-circle-minus my-auto"></i>
 								    
