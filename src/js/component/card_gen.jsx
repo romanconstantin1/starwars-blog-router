@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import placeholder from "../../img/placeholder.jpeg";
 import { Context } from "../store/appContext";
-
+import placeholder from "../../img/placeholder.jpeg";
 
 export const CardGen = (props) => {
     const {store, actions} = useContext(Context)

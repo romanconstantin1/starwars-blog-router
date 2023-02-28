@@ -35,18 +35,18 @@ export const Single = () => {
 			</div>
 
 			<div className="row m-2">
-				{Object.keys(store.singleview)?.map((key) => { 	// This generates the list of details on the bottom
+				{Object.keys(store.singleview)?.map((key) => { 	// This generates the list of details on the bottom of the single view
 					const newKey = key.replace(/_/g, " ")
+					const timeNow = new Date()
 					if (newKey.length<=12 && key!="created" && key!="edited" 
 						&& key!="url" && key!="name" && key!="homeworld" && key!="pilots") {
 						//^ there HAS to be a better way to do this, right?
 						// it's supposed to filter out a lot of unnecessary details
 						
-						// fix the bug below with how entries are generating; N/A values carry over between rerenders
 						return (
-							<div key={store.singleview[key] } className="col">			
-								<p className="fs-3 text-capitalize">{newKey}</p>
-								<p className="fs-4 text-capitalize">{store.singleview[key]}</p>
+							<div className="col">			
+								<p key={store.singleview[key] + timeNow} className="fs-3 text-capitalize">{newKey}</p>
+								<p key={store.singleview[key] + timeNow + 1} className="fs-4 text-capitalize">{store.singleview[key]}</p>
 							</div>
 						)
 					}				

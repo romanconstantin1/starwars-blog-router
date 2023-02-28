@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import definitely_star_wars from "../../img/definitely_star_wars.png";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
 
 export const Navbar = () => {
 
@@ -10,7 +9,7 @@ export const Navbar = () => {
 
 	let empty;
 	if (store.favorites.length <= 0) {
-		empty = <li className="dropdown-item">List is empty</li>
+		empty = <li className="dropdown-item">Favorites list is empty!</li>
 	} 
 
 	return (
@@ -37,8 +36,10 @@ export const Navbar = () => {
 									className="dropdown-item">
 										{entry.name}
 									</Link>
-									<button>
-										<i className="deleteButton fa-solid fa-heart-circle-minus my-auto"></i>
+									<button className="deleteButton" onClick={(e) => {
+										actions.removeFromFavorites("favorites", entry.name); e.stopPropagation()
+									}}>
+										<i className="fa-solid fa-heart-circle-minus my-auto" ></i>
 									</button>	
 								</li>
 							)

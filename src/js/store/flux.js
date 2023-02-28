@@ -19,7 +19,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {setStore({[key] : [...storeCheck, passedData]})}
 			},
 			removeFromFavorites: (key, passedData) => {
-				//do stuff here
+				const storeCheck = getStore()[key]
+				if (storeCheck.some(e => e.name === passedData))
+					{const updatedFavs = storeCheck.filter(entry => entry.name !== passedData);
+					setStore({[key]: updatedFavs})}
 			}
 
 		}

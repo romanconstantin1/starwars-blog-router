@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "../../styles/home.css";
 import { CardGen } from "../component/card_gen.jsx"
 import { Context } from "../store/appContext";
 
