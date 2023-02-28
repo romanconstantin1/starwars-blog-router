@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import definitely_star_wars from "../../img/definitely_star_wars.png";
 import { FavoriteCounter } from "../contexts/FavsContext.jsx";
 import { SingleDisplay } from "../contexts/DisplayContext.jsx";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 
-	const {favCount} = useContext(FavoriteCounter)
-	const {updateSingleDisplay} = useContext(SingleDisplay)
-
+	const {store, actions} = useContext(Context)
+	const favs = store.favorites
+	console.log(favs)
 	return (
 		<nav className="navbar bg-light">
   			<div className="container-fluid">
@@ -17,18 +18,18 @@ export const Navbar = () => {
 				<div className="dropdown px-2">
   					<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     					Favorites
-						<span className="badge rounded-pill bg-secondary mx-2">{favCount.length}</span>
+						<span className="badge rounded-pill bg-secondary mx-2">test</span>
 					</button>
 					
 					<ul className="dropdown-menu dropdown-menu-end">
-						{Object.keys(favCount)?.map((entry) => {
+						{Object.keys(favs)?.map((entry) => {
 							return (	
-								<li key={favCount[entry].name} className="display-inline">
-									<Link to={`/single/${favCount[entry].name}`} 
-									state={favCount[entry].url}
-									onClick={() => {updateSingleDisplay({name: favCount[entry].name, url: favCount[entry].url})}} 
+								<li key={favs[entry].name} className="display-inline">
+									<Link to={`/single/${favs[entry].name}`} 
+									state={favs[entry].url}
+									onClick={() => {updateSingleDisplay({name: favs[entry].name, url: favs[entry].url})}} 
 									className="dropdown-item">
-										{favCount[entry].name}
+										{favs[entry]}
 									</Link>
 									<i className="fa-solid fa-heart-circle-minus my-auto"></i>
 								    

@@ -2,10 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import placeholder from "../../img/placeholder.jpeg";
 import { FavoriteCounter } from "../contexts/FavsContext.jsx";
 import { SingleDisplay } from "../contexts/DisplayContext.jsx";
+import { Context } from "../store/appContext";
 
 export const Single = () => {
 	const {favCount, updateFavCount} = useContext(FavoriteCounter)
 	const {singleDisplay} = useContext(SingleDisplay)
+
+	const {store, actions} = useContext(Context)
 
 	const [dataList, setDataList] = useState([])
 

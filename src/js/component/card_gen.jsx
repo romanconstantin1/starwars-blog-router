@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import placeholder from "../../img/placeholder.jpeg";
-import { FavoriteCounter } from "../contexts/FavsContext.jsx"
+import { FavoriteCounter } from "../contexts/FavsContext.jsx";
 import { SingleDisplay } from "../contexts/DisplayContext.jsx";
+import { Context } from "../store/appContext";
 
 
 export const CardGen = (props) => {
-    const {favCount, updateFavCount} = useContext(FavoriteCounter)
     const {updateSingleDisplay} = useContext(SingleDisplay)
+    const {state, actions} = useContext(Context)
 
 return (
     <div className="card_rows row m-3 flex-row flex-nowrap overflow-scroll">
@@ -16,7 +17,7 @@ return (
         <div key={entry.name} className="card mx-2" style={{"width": "20rem"}}>
 
             <Link to={`/single/${entry.name}`} state={entry.url}
-            onClick={() => {updateSingleDisplay({name: entry.name, url: entry.url})}}>
+            onClick={() => {actions.loadSomeData("singleview", {name: entry.name, url: entry.url})}}>
             <img src={placeholder} className="card-img-top"></img></Link>
             
             <div className="card-body">
@@ -34,7 +35,8 @@ return (
                     
                     <button type="button" 
                         onClick={() => {
-                            if (entry.name != "Loading...") updateFavCount(favCount.concat({name: entry.name, url: entry.url}))
+                            //if (entry.name != "Loading...") actions.loadSomeData("favorites", {name: entry.name, url: entry.url})
+                            if (entry.name != "Loading...") console.log(name.entry)
                         }} 
                         className="btn btn-outline-warning float-end">
                         <small>Add to favorites </small><i className="fa-solid fa-heart-circle-plus"></i>

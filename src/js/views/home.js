@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
 import { CardGen } from "../component/card_gen.jsx"
+import { Context } from "../store/appContext";
 
 
 export const Home = () => {
@@ -8,32 +9,16 @@ export const Home = () => {
 	const [planetList, setPlanetList] = useState([{name: "Loading..."}])
 	const [shipList, setShipList] = useState([{name: "Loading..."}])
 
-	useEffect(() => {
-		fetch("https://www.swapi.tech/api/people")
-		.then(list => list.json())
-		.then(list => setCharList(list.results))
-  	}, [])
-
-	useEffect(() => {
-		fetch("https://www.swapi.tech/api/planets")
-		.then(list => list.json())
-		.then(list => setPlanetList(list.results))
-  	}, [])
-
-	useEffect(() => {
-		fetch("https://www.swapi.tech/api/starships")
-		.then(list => list.json())
-		.then(list => setShipList(list.results))
-  	}, [])
+	const {store} = useContext(Context)
 	
 	return (
 		<div>
 			<h1 className="mx-3">Characters</h1>
-			<CardGen props={charList}/>
+			<CardGen props={store.people}/>
 			<h1 className="mx-3">Planets</h1>
-			<CardGen props={planetList}/>
+			<CardGen props={store.planets}/>
 			<h1 className="mx-3">Vehicles</h1>
-			<CardGen props={shipList}/>
+			<CardGen props={store.ships}/>
 		</div>
 	);
 };
