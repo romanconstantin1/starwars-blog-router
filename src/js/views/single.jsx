@@ -5,15 +5,13 @@ import { Context } from "../store/appContext";
 export const Single = () => {
 
 	const {store, actions} = useContext(Context)
-	const [dataList, setDataList] = useState([])
-	
 	
 	useEffect(() =>{
-		fetch(store.singleview.url)
+		fetch(store.singlefetch.url)
 		.then(list => list.json())
-		.then(list => setDataList(list.result.properties))
-	}, [store.singleview])
-	
+		.then(list => actions.loadSomeData("singleview", list.result.properties))
+	}, [store.singlefetch])
+
 	return (
 		<div className="container-fluid text-center">
 			<div className="row">
@@ -27,7 +25,7 @@ export const Single = () => {
 					
 					<button type="button" className="btn btn-outline-warning" // Favorites button
 					onClick={() => {
-                        actions.addToFavorites("favorites", [...store.favorites, {name: store.singleview.name, url: store.singleview.url}])
+                        actions.addToFavorites("favorites", {name: store.singleview.name, url: store.singleview.url})
 					}}>
 					Add to favorites <i className="fa-solid fa-heart-circle-plus"></i>
                     </button>
@@ -37,7 +35,7 @@ export const Single = () => {
 			</div>
 
 			<div className="row m-2">
-				{Object.keys(dataList)?.map((key) => { 	// This generates the list of details on the bottom
+				{Object.keys(store.singleview)?.map((key) => { 	// This generates the list of details on the bottom
 					const newKey = key.replace(/_/g, " ")
 					if (newKey.length<=12 && key!="created" && key!="edited" 
 						&& key!="url" && key!="name" && key!="homeworld" && key!="pilots") {
@@ -46,9 +44,9 @@ export const Single = () => {
 						
 						// fix the bug below with how entries are generating; N/A values carry over between rerenders
 						return (
-							<div key={dataList[key] } className="col">			
+							<div key={store.singleview[key] } className="col">			
 								<p className="fs-3 text-capitalize">{newKey}</p>
-								<p className="fs-4 text-capitalize">{dataList[key]}</p>
+								<p className="fs-4 text-capitalize">{store.singleview[key]}</p>
 							</div>
 						)
 					}				

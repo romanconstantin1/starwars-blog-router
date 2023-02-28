@@ -9,29 +9,19 @@ import injectContext, { Context } from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-import { FavoriteCounter } from "./contexts/FavsContext.jsx";
-import { SingleDisplay } from "./contexts/DisplayContext.jsx";
-
 export const Layout = () => {
-
-	const [favCount, updateFavCount] = useState([])
-	const [singleDisplay, updateSingleDisplay] = useState([])
 
 	return (
 		<div>
 			<BrowserRouter>
 				<ScrollToTop>
 
-					<FavoriteCounter.Provider value={ {favCount, updateFavCount} }>
-						<SingleDisplay.Provider value= { {singleDisplay, updateSingleDisplay} }>
 							<Navbar />
 							<Routes>
 								<Route path="/" element={<Home />} />
 								<Route path="/single/*" element={<Single />} />
 								<Route path="/single/Loading..." element={<h1 className="mx-3 my-1">Not found!</h1>} />
 							</Routes>
-						</SingleDisplay.Provider>
-					</FavoriteCounter.Provider>
 
 					<Footer />
 				</ScrollToTop>

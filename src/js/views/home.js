@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "../../styles/home.css";
 import { CardGen } from "../component/card_gen.jsx"
 import { Context } from "../store/appContext";
 
 
 export const Home = () => {
-	const [charList, setCharList] = useState([{name: "Loading..."}])
-	const [planetList, setPlanetList] = useState([{name: "Loading..."}])
-	const [shipList, setShipList] = useState([{name: "Loading..."}])
-
 	const {store} = useContext(Context)
 	
 	return (
