@@ -38,6 +38,7 @@ export const Single = () => {
 				{Object.keys(store.singleview)?.map((key) => { 	// This generates the list of details on the bottom of the single view
 					const newKey = key.replace(/_/g, " ")
 					const timeNow = new Date()
+					
 					if (newKey.length<=12 && key!="created" && key!="edited" 
 						&& key!="url" && key!="name" && key!="homeworld" && key!="pilots") {
 						//^ there HAS to be a better way to do this, right?

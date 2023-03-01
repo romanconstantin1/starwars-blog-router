@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			loadSomeData: (key, passedData) => {
+				setStore({"singleview" : {name : "Loading..."}}),
 				setStore({[key] : passedData})
 			},
 			addToFavorites: (key, passedData) => {

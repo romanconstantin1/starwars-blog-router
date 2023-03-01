@@ -15,7 +15,9 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar bg-light">
   			<div className="container-fluid">
-    			<Link to="/" className="navbar-brand px-5"><img src={definitely_star_wars} height="75"></img></Link>
+    			<Link type="button" to="/" className="navbar-brand px-5">
+					<img src={definitely_star_wars} height="75"></img>
+				</Link>
 				
 				<div className="dropdown px-2">
   					<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
