@@ -25,12 +25,17 @@ export const Single = () => {
 					
 					<button type="button" className="btn btn-outline-warning" // Favorites button
 					onClick={() => {
-                        actions.addToFavorites("favorites", {name: store.singleview.name, url: store.singleview.url})
+                    actions.addToFavorites("favorites", 
+					{name: store.singleview.name, url: store.singleview.url})
 					}}>
-					Add to favorites <i className="fa-solid fa-heart-circle-plus"></i>
+						Add to favorites 
+						<i className="fa-solid fa-heart-circle-plus"></i>
                     </button>
 
-					<p className="fs-3 mt-3">A long time ago, in a galaxy far far away...</p>
+					<p className="fs-3 mt-3">
+						A long time ago, in a galaxy far far away...
+					</p>
+
 				</div>
 			</div>
 
@@ -40,14 +45,23 @@ export const Single = () => {
 					const timeNow = new Date()
 					
 					if (newKey.length<=12 && key!="created" && key!="edited" 
-						&& key!="url" && key!="name" && key!="homeworld" && key!="pilots") {
+					&& key!="url" && key!="name" && key!="homeworld" && key!="pilots") {
 						//^ there HAS to be a better way to do this, right?
 						// it's supposed to filter out a lot of unnecessary details
 						
 						return (
-							<div className="col">			
-								<p key={store.singleview[key] + timeNow} className="fs-3 text-capitalize">{newKey}</p>
-								<p key={store.singleview[key] + timeNow + 1} className="fs-4 text-capitalize">{store.singleview[key]}</p>
+							<div className="col">
+
+								<p key={store.singleview[key] + timeNow} 
+								className="fs-3 text-capitalize">
+									{newKey}
+								</p>
+
+								<p key={store.singleview[key] + timeNow + 1} 
+								className="fs-4 text-capitalize">
+									{store.singleview[key]}
+								</p>
+
 							</div>
 						)
 					}				

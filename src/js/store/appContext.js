@@ -25,7 +25,6 @@ const injectContext = PassedComponent => {
 			fetch("https://www.swapi.tech/api/people")
 			.then(charList => charList.json())
 			.then(charList => state.actions.loadSomeData("people", charList.results))
-			.then(console.log(state.store));
 
 			fetch("https://www.swapi.tech/api/planets")
 			.then(planList => planList.json())

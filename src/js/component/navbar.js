@@ -7,7 +7,7 @@ export const Navbar = () => {
 
 	const {store, actions} = useContext(Context)
 
-	let empty;
+	let emptyFavsList;
 	if (store.favorites.length <= 0) {
 		empty = <li className="dropdown-item">Favorites list is empty!</li>
 	} 
@@ -20,26 +20,34 @@ export const Navbar = () => {
 				</Link>
 				
 				<div className="dropdown px-2">
-  					<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+  					<button className="btn btn-primary dropdown-toggle" 
+					type="button" data-bs-toggle="dropdown" aria-expanded="false">
     					Favorites
-						<span className="badge rounded-pill bg-secondary mx-2">{store.favorites.length}</span>
+						<span className="badge rounded-pill bg-secondary mx-2">
+							{store.favorites.length}
+						</span>
 					</button>
 					
 					<ul className="dropdown-menu dropdown-menu-end">
-						{empty}
+						{emptyFavsList}
 						{store.favorites.map((entry) => {
 							return (	
 								<li key={entry.name} className="d-flex">
+									
 									<Link to={`/single/${entry.name}`} 
 									state={entry.url}
 									onClick={() => {
-										actions.loadSomeData("singlefetch", {name: [entry.name], url: [entry.url]})
+										actions.loadSomeData("singlefetch", 
+										{name: [entry.name], url: [entry.url]})
 									}} 
 									className="dropdown-item">
 										{entry.name}
 									</Link>
+
 									<button className="deleteButton" onClick={(e) => {
-										actions.removeFromFavorites("favorites", entry.name); e.stopPropagation()
+										actions.removeFromFavorites("favorites", 
+										entry.name); e.stopPropagation()
 									}}>
 										<i className="fa-solid fa-heart-circle-minus my-auto" ></i>
 									</button>	
@@ -48,7 +56,7 @@ export const Navbar = () => {
 						}
 					)}
 					</ul>
-					</div>
+				</div>
   			</div>
 		</nav>
 	);
