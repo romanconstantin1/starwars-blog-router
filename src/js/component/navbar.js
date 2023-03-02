@@ -9,7 +9,7 @@ export const Navbar = () => {
 
 	let emptyFavsList;
 	if (store.favorites.length <= 0) {
-		empty = <li className="dropdown-item">Favorites list is empty!</li>
+		emptyFavsList = <li className="dropdown-item">Favorites list is empty!</li>
 	} 
 
 	return (
